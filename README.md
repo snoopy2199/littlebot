@@ -12,7 +12,7 @@ npm install
 token={slackbot_token} node slack_littlebot.js
 ```
 
-## Play! (*´Д`)つ))´∀`)
+## Play! (*´Д\`)つ))´∀\`)
 * `@{botname} shutdown`
 * `littlebot在哪裡`
 * `@here`
