@@ -25,10 +25,6 @@
     "should": "^8.0.2",
     "winston": "^2.1.1"
   },
-  "scripts": {
-    "pretest": "jscs ./lib/",
-    "test": "mocha tests/*.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/snoopy2199/littlebot.git"
