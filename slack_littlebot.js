@@ -294,6 +294,68 @@ controller.hears(['你怎麼看'], 'direct_message,direct_mention,mention', func
     }
 });
 
+controller.hears(['(car+)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+    var index = Math.floor((Math.random() * 3));
+    switch(index) {
+        case 0:
+            bot.reply(message, "紅色開運 :car:");
+            break;
+        case 1:
+            bot.reply(message, "一台小黃 :taxi:");
+            break;
+        case 2:
+            bot.reply(message, "平凡無奇的車款 :blue_car:");
+            break;
+    }
+});
+
+controller.hears(['(su+it)', '(color+)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+    var index = Math.floor((Math.random() * 4));
+    switch(index) {
+        case 0:
+            bot.reply(message, "黑桃老大！ :spades:");
+            break;
+        case 1:
+            bot.reply(message, "獻給妳我的心~ :heart:");
+            break;
+        case 2:
+            bot.reply(message, "梅花梅花幾月開 :clubs:");
+            break;
+        case 3:
+            bot.reply(message, "鑽石恆久遠 一顆就破產 :diamonds:");
+            break;
+    }
+});
+
+controller.hears(['幫我選'], 'direct_message,direct_mention,mention', function(bot, message) {
+    var text = message.text;
+    var select = text.split("幫我選");
+    if (!select[1]) {
+        bot.reply(message, "No comment.");
+        return;
+    }
+
+    select = select[1].trim();
+    select = select.split(" ");
+    var answer = select[Math.floor((Math.random() * select.length))];
+
+    var index = Math.floor((Math.random() * 4));
+    switch(index) {
+        case 0:
+            bot.reply(message, "專業推薦" + answer);
+            break;
+        case 1:
+            bot.reply(message, "私心推薦" + answer);
+            break;
+        case 2:
+            bot.reply(message, "強烈建議" + answer);
+            break;
+        case 3:
+            bot.reply(message, "隨便選選" + answer);
+            break;
+    }
+});
+
 controller.on('reaction_added', function(bot, message) {
     if ((message.item_user == "U20PN90N5") && (message.reaction.indexOf("+1") > -1)) {
         bot.reply(message.item, "<@" + message.user + ">成為了我的小粉絲 :heshy2:");

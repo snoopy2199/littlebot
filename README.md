@@ -19,5 +19,8 @@ token={slackbot_token} node slack_littlebot.js
 * `@{botname} 猜拳`
 * `@{botname} {星座}`
 * `@{botname} 你怎麼看`
+* `(car)` `(carrrr.....)`
+* `(suit)` `(suu.....it)` `(color)` `(colorr.....)`
+* `@{botname} 幫我選 {選項1} {選項2} ...`
 * 對littlebot發言按:+1:
 * 對littlebot發言收回:+1:
