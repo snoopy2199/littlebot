@@ -152,149 +152,54 @@ controller.hears(['猜拳'], 'direct_message,direct_mention,mention', function(b
 });
 
 controller.hears(['摩羯'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Capricorn", message);
+    doHoroscope(bot, message, 'Capricorn');
 });
 
 controller.hears(['水瓶'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Aquarius", message);
+    doHoroscope(bot, message, 'Aquarius');
 });
 
 controller.hears(['雙魚'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Pisces", message);
+    doHoroscope(bot, message, 'Pisces');
 });
 
 controller.hears(['牡羊'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Aries", message);
+    doHoroscope(bot, message, 'Aries');
 });
 
 controller.hears(['金牛'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Taurus", message);
+    doHoroscope(bot, message, 'Taurus');
 });
 
 controller.hears(['雙子'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Gemini", message);
+    doHoroscope(bot, message, 'Gemini');
 });
 
 controller.hears(['巨蟹'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Cancer", message);
+    doHoroscope(bot, message, 'Cancer');
 });
 
 controller.hears(['獅子'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Leo", message);
+    doHoroscope(bot, message, 'Leo');
 });
 
 controller.hears(['處女'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Virgo", message);
+    doHoroscope(bot, message, 'Virgo');
 });
 
 controller.hears(['天秤'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Libra", message);
+    doHoroscope(bot, message, 'Libra');
 });
 
 controller.hears(['天蠍'], 'direct_message,direct_mention,mention', function(bot, message) {
-    bot.api.reactions.add({
-        timestamp: message.ts,
-        channel: message.channel,
-        name: 'read',
-    }, function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(', err);
-        }
-    });
-    getHoroscope("Scorpio", message);
+    doHoroscope(bot, message, 'Scorpio');
 });
 
 controller.hears(['射手'], 'direct_message,direct_mention,mention', function(bot, message) {
+    doHoroscope(bot, message, 'Sagittarius');
+});
+
+function doHoroscope(bot, message, horoscope) {
     bot.api.reactions.add({
         timestamp: message.ts,
         channel: message.channel,
@@ -304,8 +209,8 @@ controller.hears(['射手'], 'direct_message,direct_mention,mention', function(b
             bot.botkit.log('Failed to add emoji reaction :(', err);
         }
     });
-    getHoroscope("Sagittarius", message);
-});
+    getHoroscope(horoscope, message);
+}
 
 function getHoroscope(constellations, message) {
     var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http%3A%2F%2Fwww.daily-zodiac.com%2Fmobile%2Fzodiac%2F" +
