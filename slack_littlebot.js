@@ -151,52 +151,16 @@ controller.hears(['猜拳'], 'direct_message,direct_mention,mention', function(b
     });
 });
 
-controller.hears(['摩羯'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Capricorn');
-});
+var HOROSCOPE_C = ['摩羯', '摩羯', '雙魚', '牡羊', '金牛', '雙子', 
+                   '巨蟹', '獅子', '處女', '天秤', '天蠍', '射手'];
+var HOROSCOPE_E = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 
+                   'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius'];
+controller.hears(HOROSCOPE_C, 'direct_message,direct_mention,mention', function(bot, message) {
+    var match = message.match[0];
+    var index = HOROSCOPE_C.indexOf(match);
+    match = HOROSCOPE_E[index];
 
-controller.hears(['水瓶'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Aquarius');
-});
-
-controller.hears(['雙魚'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Pisces');
-});
-
-controller.hears(['牡羊'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Aries');
-});
-
-controller.hears(['金牛'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Taurus');
-});
-
-controller.hears(['雙子'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Gemini');
-});
-
-controller.hears(['巨蟹'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Cancer');
-});
-
-controller.hears(['獅子'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Leo');
-});
-
-controller.hears(['處女'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Virgo');
-});
-
-controller.hears(['天秤'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Libra');
-});
-
-controller.hears(['天蠍'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Scorpio');
-});
-
-controller.hears(['射手'], 'direct_message,direct_mention,mention', function(bot, message) {
-    doHoroscope(bot, message, 'Sagittarius');
+    doHoroscope(bot, message, match);
 });
 
 function doHoroscope(bot, message, horoscope) {
@@ -330,7 +294,7 @@ controller.hears(['(su+it)', '(color+)'], 'direct_message,direct_mention,mention
 controller.hears(['幫我選'], 'direct_message,direct_mention,mention', function(bot, message) {
     var text = message.text;
     var select = text.split("幫我選");
-    if (!select[1]) {
+    if (select[1] == "") {
         bot.reply(message, "No comment.");
         return;
     }
