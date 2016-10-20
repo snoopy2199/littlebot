@@ -151,7 +151,7 @@ controller.hears(['猜拳'], 'direct_message,direct_mention,mention', function(b
     });
 });
 
-var HOROSCOPE_C = ['摩羯', '摩羯', '雙魚', '牡羊', '金牛', '雙子',
+var HOROSCOPE_C = ['摩羯', '水瓶', '雙魚', '牡羊', '金牛', '雙子',
                    '巨蟹', '獅子', '處女', '天秤', '天蠍', '射手'];
 var HOROSCOPE_E = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini',
                    'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius'];
@@ -316,7 +316,7 @@ controller.hears([':heclap:'], 'direct_message,direct_mention,mention,ambient', 
     bot.reply(message, ":heclap:");
 });
 
-controller.hears(['好棒'], 'direct_message,direct_mention,mention', function(bot, message) {
+controller.hears(['好棒', '太棒', '超棒'], 'direct_message,direct_mention,mention', function(bot, message) {
     bot.reply(message, "因為你的一句讚美讓littlebot變得更好 :heshy2:");
 });
 
