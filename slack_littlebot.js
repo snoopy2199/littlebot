@@ -151,9 +151,9 @@ controller.hears(['猜拳'], 'direct_message,direct_mention,mention', function(b
     });
 });
 
-var HOROSCOPE_C = ['摩羯', '摩羯', '雙魚', '牡羊', '金牛', '雙子', 
+var HOROSCOPE_C = ['摩羯', '摩羯', '雙魚', '牡羊', '金牛', '雙子',
                    '巨蟹', '獅子', '處女', '天秤', '天蠍', '射手'];
-var HOROSCOPE_E = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 
+var HOROSCOPE_E = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini',
                    'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius'];
 controller.hears(HOROSCOPE_C, 'direct_message,direct_mention,mention', function(bot, message) {
     var match = message.match[0];
@@ -241,8 +241,11 @@ var OPINION = ["別再問了，我什麼都不知道 :he_amaze:",
                "請受小的一拜 :worship2:",
                "明早一覺醒來你會發現...什麼事都沒有改變",
                "你的名字是？",
-               "體 悟 心 靈 祥 和"];
-controller.hears(['你怎麼看', '你說呢', '你覺得呢'], 'direct_message,direct_mention,mention', function(bot, message) {
+               "體 悟 心 靈 祥 和",
+               "啊不就好棒棒 :haobonbon:",
+               "需要緊急hotfix",
+               "沒救惹 :yaoming:"];
+controller.hears(['你怎麼看', '你說呢', '你覺得呢', '你怎麼想'], 'direct_message,direct_mention,mention', function(bot, message) {
     var index = Math.floor((Math.random() * OPINION.length));
     bot.reply(message, OPINION[index]);
 });
