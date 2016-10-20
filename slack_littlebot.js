@@ -312,6 +312,14 @@ controller.hears(['幫我選'], 'direct_message,direct_mention,mention', functio
     }
 });
 
+controller.hears([':heclap:'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+    bot.reply(message, ":heclap:");
+});
+
+controller.hears(['好棒'], 'direct_message,direct_mention,mention', function(bot, message) {
+    bot.reply(message, "因為你的一句讚美讓littlebot變得更好 :heshy2:");
+});
+
 controller.on('reaction_added', function(bot, message) {
     if ((message.item_user == "U20PN90N5") && (message.reaction.indexOf("+1") > -1)) {
         bot.reply(message.item, "<@" + message.user + ">成為了我的小粉絲 :heshy2:");
