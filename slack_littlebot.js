@@ -250,7 +250,7 @@ controller.hears(['你怎麼看', '你說呢', '你覺得呢', '你怎麼想'], 
     bot.reply(message, OPINION[index]);
 });
 
-controller.hears(['(car+)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+controller.hears(['\\(car+\\)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
     var index = Math.floor((Math.random() * 3));
     switch(index) {
         case 0:
@@ -265,7 +265,7 @@ controller.hears(['(car+)'], 'direct_message,direct_mention,mention,ambient', fu
     }
 });
 
-controller.hears(['(su+it)', '(color+)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+controller.hears(['\\(su+it\\)', '\\(color+\\)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
     var index = Math.floor((Math.random() * 4));
     switch(index) {
         case 0:
