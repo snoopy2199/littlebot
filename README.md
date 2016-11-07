@@ -13,13 +13,14 @@ token={slackbot_token} node slack_littlebot.js
 ```
 
 ## Play! (*´Д\`)つ))´∀\`)
-* `littlebot在哪裡`
+* `littlebot在哪裡` `Where is littlebot`
 * `(car)` `(carrr...)`
 * `(suit)` `(suuu...it)` `(color)` `(colorrr...)`
 * (拍手表符)
 * `@here`
 * `@{botname} shutdown`
 * `@{botname} 猜拳`
+* `@{botname} Daily`
 * `@{botname} {星座}`
 * `@{botname} 你怎麼看` `@{botname} 你說呢` `@{botname} 你覺得呢` `@{botname} 你怎麼想`
 * `@{botname} 幫我選 {選項1} {選項2} ...`
