@@ -346,6 +346,10 @@ function getDaily(message) {
 
             var daily = {};
             daily.quote = content.p[0].strong.content;
+            if (typeof(daily.quote) === "undefined") {
+                daily.quote = content.p[0].strong.span.content;
+            }
+
             daily.from = content.div[2].content;
             daily.chinese = content.p[1];
 
