@@ -368,14 +368,16 @@ controller.hears([':bug:','\\(bug+\\)'],
         var channelId = message.channel;
 
         getRandomId(bot,channelId, function(response) {
-            var members = response.group.members;
-            var index = members.indexOf('U20PN90N5');
-            if (index > -1) {
-                members.splice(index, 1);
-            }
-            var answer = members[Math.floor((Math.random() * members.length))];
+            if(typeof response.group.members != 'undefined') {
+                var members = response.group.members;
+                var index = members.indexOf('U20PN90N5');
+                if (index > -1) {
+                    members.splice(index, 1);
+                }
+                var answer = members[Math.floor((Math.random() * members.length))];
 
-            bot.reply(message, 'Bug 是 <@' + answer + '> 的!');
+                bot.reply(message, 'Bug 是 <@' + answer + '> 的!');
+            }
         });
     });
 
@@ -419,10 +421,21 @@ controller.hears(['alias'],
                             if(user_id!=null){
                                 changeIdToName(bot, user_id, function(response){
                                     if(response!=null) {
+                                        var image_url = "";
+                                        if(typeof response.user.profile.image_original != 'undefined'){
+                                            image_url = response.user.profile.image_original;
+                                        }else{
+                                            image_url = response.user.profile.image_512.match(/d=.+/,"");
+                                            if(image_url!=null){
+                                                image_url = image_url[0].replace('d=',"");
+                                                image_url = decodeURIComponent(image_url);
+                                            }
+                                        }
+
                                         var http = require('https');
                                         var options = {
                                             host: 'slack.com',
-                                            path: '/api/chat.postMessage?token='+process.env.token+'&channel='+channel_name+'&text=' + encodeURI(alias_message) + '&icon_url='+encodeURI(response.user.profile.image_original)+'&username=' + response.user.name + '&pretty=1'
+                                            path: '/api/chat.postMessage?token='+process.env.token+'&channel='+channel_name+'&text=' + encodeURI(alias_message) + '&icon_url='+encodeURI(image_url)+'&username=' + response.user.name + '&pretty=1'
                                         };
                                         var req = http.get(options, function (res) {
 
