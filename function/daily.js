@@ -1,7 +1,7 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var cheerio = require("cheerio");
 
-module.exports = function(controller, bot){
+module.exports = function(controller){
     controller.hears(['Daily'], 'direct_message,direct_mention,mention', function(bot, message) {
         getDaily(message, bot);
     });
