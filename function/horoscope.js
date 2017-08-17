@@ -1,4 +1,5 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var cheerio = require("cheerio");
 
 var HOROSCOPE_C = ['摩羯', '水瓶', '雙魚', '牡羊', '金牛', '雙子',
                    '巨蟹', '獅子', '處女', '天秤', '天蠍', '射手'];
@@ -28,8 +29,7 @@ module.exports = function(controller, bot){
     }
 
     function getHoroscope(constellations, message) {
-        var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http%3A%2F%2Fwww.daily-zodiac.com%2Fmobile%2Fzodiac%2F" +
-                  constellations + "%22&format=json&diagnostics=true&callback=";
+        var url = "http://www.daily-zodiac.com/mobile/zodiac/" + constellations;
 
         if (constellations == "Scorpio") {
             constellations = "scorpius";
@@ -38,13 +38,13 @@ module.exports = function(controller, bot){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var content = JSON.parse(this.responseText).query.results.body.div.div.div.div.div[0].div;
+                var $ = cheerio.load(this.responseText, {decodeEntities: false});
 
                 var horoscope = {};
-                horoscope.name = content[0].p[0].content + " :" + constellations + ":";
-                horoscope.today = content[2].ul.li[1].content + content[2].ul.li[1].span.content;
-                horoscope.weather = content[2].ul.li[2].span.content;
-                horoscope.article = content[2].section.article;
+                horoscope.name = $(".middle p.name").eq(0).text().trim();
+                horoscope.today = $(".middle .today li").eq(1).text().trim();
+                horoscope.weather = $(".middle .today li").eq(2).text().trim();
+                horoscope.article = $(".middle article").eq(0).text().trim();
 
                 switch(horoscope.weather) {
                     case "晴":
