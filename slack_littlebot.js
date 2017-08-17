@@ -14,4 +14,4 @@ var bot = controller.spawn({
     token: process.env.token
 }).startRTM();
 
-var func = require("./function")(controller, bot);
+var func = require("./function")(controller);

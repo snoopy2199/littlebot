@@ -1,11 +1,11 @@
-module.exports = function(controller, bot){
+module.exports = function(controller){
     var alias = require("./alias.js")(controller);
     var bug = require("./bug.js")(controller);
     var choice = require("./choice.js")(controller);
     var clap = require("./clap.js")(controller);
     var daily = require("./daily.js")(controller);
     var here = require("./here.js")(controller);
-    var horoscope = require("./horoscope.js")(controller, bot);
+    var horoscope = require("./horoscope.js")(controller);
     var praise = require("./praise.js")(controller);
     var random = require("./random.js")(controller);
     var reaction = require("./reaction.js")(controller);
