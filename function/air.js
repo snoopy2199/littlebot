@@ -7,7 +7,10 @@ module.exports = function(controller){
     controller.hears(['的空氣$'], 'direct_message,direct_mention,mention', function(bot, message) {
         var site = message.text.split('的空氣')[0];
 
-        if (!(site in AQIList)) {
+        if (site === '台灣') {
+            bot.reply(message, 'https://taqm.epa.gov.tw/taqm/Chart/AqiMap/map2.aspx?ts=' + (new Date()).getTime());
+            return;
+        } else if (!(site in AQIList)) {
             bot.reply(message, '沒有' + site + '的空氣資料啊 :thinking_face:');
             return;
         }
