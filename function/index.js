@@ -1,4 +1,5 @@
 module.exports = function(controller){
+    var air = require("./air.js")(controller);
     var alias = require("./alias.js")(controller);
     var bug = require("./bug.js")(controller);
     var choice = require("./choice.js")(controller);
