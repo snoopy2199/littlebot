@@ -17,7 +17,8 @@ module.exports = function(controller){
 
         loadAQI(function() {
             var data = AQIList[site];
-            var aqi = data.AQI;
+            var aqi = data.AQI ? 'AQI ' + data.AQI : '設備維護中';
+            var aqiLink = data.AQI ? 'https://taqm.epa.gov.tw/taqm/tw/b0203.aspx' : '';
             var time = new Date(data.Time).getTime() / 1000;
             var level = data.AQIStyle;
 
@@ -77,8 +78,8 @@ module.exports = function(controller){
                     'color': color,
                     'pretext': review,
                     'author_name': site,
-                    'title': 'AQI ' + aqi,
-                    'title_link': 'https://taqm.epa.gov.tw/taqm/tw/b0203.aspx',
+                    'title': aqi,
+                    'title_link': aqiLink,
                     'text': text,
                     'footer': '行政院環境保護署',
                     'footer_icon': 'http://www.library.com.tw/images/IMG/L00073-1.gif',
@@ -92,7 +93,7 @@ module.exports = function(controller){
 };
 
 function loadAQI(callback) {
-    var url = 'https://taqm.epa.gov.tw/taqm/aqs.ashx?lang=tw&act=aqi-epa&ts=' + (new Date()).getTime();
+    var url = 'https://taqm.epa.gov.tw/taqm/aqs.ashx?lang=tw&act=aqi-epa';
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
