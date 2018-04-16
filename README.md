@@ -13,12 +13,16 @@ token={slackbot_token} node slack_littlebot.js
 ```
 
 ## Play! (*´Д\`)つ))´∀\`)
+#### General
 * `littlebot在哪裡` `Where is littlebot`
 * `(car)` `(carrr...)`
 * `(suit)` `(suuu...it)` `(color)` `(colorrr...)`
 * (拍手表符)
 * (蟲蟲表符)
 * `@here`
+* 對littlebot發言按:+1:
+* 對littlebot發言收回:+1:
+#### Direct message or Mention
 * `@{botname} shutdown`
 * `@{botname} 猜拳`
 * `@{botname} Daily`
@@ -28,6 +32,5 @@ token={slackbot_token} node slack_littlebot.js
 * `@{botname} 你怎麼看` `@{botname} 你說呢` `@{botname} 你覺得呢` `@{botname} 你怎麼想`
 * `@{botname} 幫我選 {選項1} {選項2} ...`
 * `@{botname} 好棒` `@{botname} 太棒` `@{botname} 超棒` `@{botname} 真棒` `@{botname} 棒棒`
-* `@{botname} alias @{user_name} ({channel_name}) {message}`
-* 對littlebot發言按:+1:
-* 對littlebot發言收回:+1:
+#### Only Direct message
+* `alias @{user_name} ({channel_name}) {message}`
