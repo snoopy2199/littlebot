@@ -1,9 +1,9 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var cheerio = require("cheerio");
 
-var HOROSCOPE_C = ['摩羯', '水瓶', '雙魚', '牡羊', '金牛', '雙子',
+var HOROSCOPE_C = ['摩羯', '魔羯', '水瓶', '雙魚', '牡羊', '金牛', '雙子',
                    '巨蟹', '獅子', '處女', '天秤', '天蠍', '射手'];
-var HOROSCOPE_E = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini',
+var HOROSCOPE_E = ['Capricorn', 'Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini',
                    'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius'];
 
 module.exports = function(controller){
