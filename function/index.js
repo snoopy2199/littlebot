@@ -2,6 +2,7 @@ module.exports = function(controller){
     var air = require("./air.js")(controller);
     var alias = require("./alias.js")(controller);
     var bug = require("./bug.js")(controller);
+    var cbike = require("./cbike.js")(controller);
     var choice = require("./choice.js")(controller);
     var clap = require("./clap.js")(controller);
     var daily = require("./daily.js")(controller);

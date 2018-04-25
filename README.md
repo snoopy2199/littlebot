@@ -29,6 +29,7 @@ token={slackbot_token} node slack_littlebot.js
 * `@{botname} {星座}`
 * `@{botname} {測站}的空氣`
 * `@{botname} 台灣的空氣`
+* `@{botname} C-Bike {站點}`
 * `@{botname} 你怎麼看` `@{botname} 你說呢` `@{botname} 你覺得呢` `@{botname} 你怎麼想`
 * `@{botname} 幫我選 {選項1} {選項2} ...`
 * `@{botname} 好棒` `@{botname} 太棒` `@{botname} 超棒` `@{botname} 真棒` `@{botname} 棒棒`
