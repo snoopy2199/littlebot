@@ -103,7 +103,7 @@ function loadAQI(callback) {
                 AQIList[element.SiteName] = element;
             });
 
-            if (callback && typeof callback === "function") {
+            if (callback && typeof callback === 'function') {
                 callback();
             }
         }

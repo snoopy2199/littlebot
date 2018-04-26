@@ -57,10 +57,35 @@ function loadStation(callback) {
             var responseJSON = JSON.parse(this.responseText).features;
             stationList = {};
             responseJSON.forEach(function(element) {
-                stationList[element.properties.title.replace(/站/g, '')] = element;
+                var title = element.properties.title;
+                var replaceTitle = title.replace(/站/g, '');
+                stationList[replaceTitle] = element;
+
+                if (replaceTitle.search(/\(\d+\)/) >= 0) {
+                    var station = replaceTitle.replace(/\(\d+\)/, '');
+                    var data = element.properties;
+                    var updateTime =  new Date(data.updateTime).getTime();
+
+                    if (station in stationList) {
+                        var mergeData = stationList[station].properties;
+                        mergeData.title += ' & ' + title;
+                        mergeData.availableCarCount += data.availableCarCount;
+                        mergeData.availableSpaceCount += data.availableSpaceCount;
+                        mergeData.updateTime = updateTime > mergeData.updateTime ? updateTime : mergeData.updateTime;
+                    } else {
+                        stationList[station] = {
+                            properties: {
+                                title: title,
+                                availableCarCount: data.availableCarCount,
+                                availableSpaceCount: data.availableSpaceCount,
+                                updateTime: updateTime
+                            }
+                        }
+                    }
+                }
             });
 
-            if (callback && typeof callback === "function") {
+            if (callback && typeof callback === 'function') {
                 callback();
             }
         }
