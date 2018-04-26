@@ -12,8 +12,7 @@ module.exports = function(controller){
             return;
         }
 
-        var station = msg[1].slice(-1) === '站' ? msg[1].slice(0, -1) : msg[1];
-
+        var station = msg[1].replace(/站/g, '');
         if (!(station in stationList)) {
             bot.reply(message, '沒有' + station + '這個站點耶 :hushed:');
             return;
@@ -58,7 +57,7 @@ function loadStation(callback) {
             var responseJSON = JSON.parse(this.responseText).features;
             stationList = {};
             responseJSON.forEach(function(element) {
-                stationList[element.properties.title.slice(0, -1)] = element;
+                stationList[element.properties.title.replace(/站/g, '')] = element;
             });
 
             if (callback && typeof callback === "function") {
